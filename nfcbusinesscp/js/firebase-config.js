@@ -1,7 +1,9 @@
-// MODULOS NFC BUSINESS DASHBOARD
-// Firebase project: modulos-3d5de
 
-export const firebaseConfig = {
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
+
+const firebaseConfig = {
   apiKey: "AIzaSyBL32KwCkJqSe2KBAO1sbuWLl83s4Cn8lo",
   authDomain: "modulos-3d5de.firebaseapp.com",
   databaseURL: "https://modulos-3d5de-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -12,20 +14,8 @@ export const firebaseConfig = {
   measurementId: "G-79YXV1JXY5"
 };
 
-export const ADMIN_EMAIL = "geeky1934@gmail.com";
+const app = initializeApp(firebaseConfig);
 
-export const DEFAULT_PUBLIC_BASE_URL =
-  "https://modulos.in/nfcbusinesscp/";
-
-export function isConfigured() {
-  return Boolean(
-    firebaseConfig.apiKey &&
-    firebaseConfig.authDomain &&
-    firebaseConfig.databaseURL &&
-    firebaseConfig.projectId &&
-    firebaseConfig.appId &&
-    !Object.values(firebaseConfig).some(
-      value => String(value).includes("PASTE_")
-    )
-  );
-}
+export const auth = getAuth(app);
+export const db = getDatabase(app);
+export default app;

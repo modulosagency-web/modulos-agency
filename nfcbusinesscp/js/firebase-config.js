@@ -1,6 +1,6 @@
 // MODULOS NFC BUSINESS DASHBOARD - Firebase configuration (project: modulos-3d5de)
 export const firebaseConfig = {
-  apiKey: "AIzaSyBL32KjCqJSe2KBAO1sbuWLl83s4Cn8lo",
+  apiKey: "AIzaSyBL32KwCkJqSe2KBAO1sbuWLl83s4Cn8lo",
   authDomain: "modulos-3d5de.firebaseapp.com",
   databaseURL: "https://modulos-3d5de-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "modulos-3d5de",

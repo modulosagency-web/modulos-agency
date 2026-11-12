@@ -1,4 +1,6 @@
-// MODULOS NFC BUSINESS DASHBOARD - Firebase configuration (project: modulos-3d5de)
+// MODULOS NFC BUSINESS DASHBOARD
+// Firebase project: modulos-3d5de
+
 export const firebaseConfig = {
   apiKey: "AIzaSyBL32KwCkJqSe2KBAO1sbuWLl83s4Cn8lo",
   authDomain: "modulos-3d5de.firebaseapp.com",
@@ -11,9 +13,19 @@ export const firebaseConfig = {
 };
 
 export const ADMIN_EMAIL = "geeky1934@gmail.com";
-export const DEFAULT_PUBLIC_BASE_URL = "https://modulos.in/nfcbusinesscp/";
+
+export const DEFAULT_PUBLIC_BASE_URL =
+  "https://modulos.in/nfcbusinesscp/";
 
 export function isConfigured() {
-  return !!(firebaseConfig.apiKey && firebaseConfig.databaseURL && firebaseConfig.projectId) &&
-    !Object.values(firebaseConfig).some(v => String(v).includes("PASTE_"));
+  return Boolean(
+    firebaseConfig.apiKey &&
+    firebaseConfig.authDomain &&
+    firebaseConfig.databaseURL &&
+    firebaseConfig.projectId &&
+    firebaseConfig.appId &&
+    !Object.values(firebaseConfig).some(
+      value => String(value).includes("PASTE_")
+    )
+  );
 }

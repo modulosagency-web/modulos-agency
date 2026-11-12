@@ -5,13 +5,13 @@
 //  databaseURL is required for Realtime Database.
 // ============================================================
 export const firebaseConfig = {
-  apiKey: "PASTE_API_KEY",
-  authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
-  databaseURL: "PASTE_DATABASE_URL",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT_ID.appspot.com",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "AIzaSyBL32KjCqJSe2KBAO1sbuWLl83s4Cn8lo",
+  authDomain: "modulos-3d5de.firebaseapp.com",
+  databaseURL: "https://modulos-3d5de-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "modulos-3d5de",
+  storageBucket: "modulos-3d5de.firebasestorage.app",
+  messagingSenderId: "803636782488",
+  appId: "1:803636782488:web:736eef934ac4c08ee177ed"
 };
 
 export const ADMIN_EMAIL = "geeky1934@gmail.com";

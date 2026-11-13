@@ -1,0 +1,2 @@
+import {cors,json,clearCookie} from "../_lib/http.js";import {requireAuth} from "../_lib/auth.js";import {csrf} from "../_lib/http.js";
+export default function handler(req,res){if(!cors(req,res))return;if(req.method!=="POST")return json(res,405,{error:"Method not allowed."});if(!requireAuth(req,res))return;if(!csrf(req,res))return json(res,403,{error:"Invalid CSRF token."});clearCookie(res,"modulos_session");clearCookie(res,"modulos_csrf");json(res,200,{ok:true});}

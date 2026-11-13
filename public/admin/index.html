@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827"><title>MODULOS · Business Dashboard</title>
+<link rel="stylesheet" href="/admin/styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">M</span><span>MODULOS<small>BUSINESS CONSOLE</small></span></a>
+    <nav>
+      <button class="nav active" data-view="dashboard">▦ <span>Dashboard</span></button>
+      <button class="nav" data-view="businesses">▤ <span>All businesses</span></button>
+      <button class="nav" data-view="add">＋ <span>Add business</span></button>
+      <button class="nav" data-view="settings">⚙ <span>Settings</span></button>
+    </nav>
+    <div class="sidebar-bottom"><span class="status-dot"></span> Repository connected<br><small>modulos.in</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button><div><div class="eyebrow">BUSINESS MANAGEMENT</div><h1 id="pageTitle">Dashboard</h1></div><div class="top-actions"><span class="admin-label" id="adminLabel">Not signed in</span><button class="btn btn-quiet" id="logoutBtn" hidden>Log out</button></div></header>
+    <section id="authView" class="auth-wrap">
+      <div class="auth-card">
+        <div class="brand-mark large">M</div><p class="eyebrow">SECURE ADMIN ACCESS</p><h2 id="authTitle">Welcome back</h2><p class="muted" id="authDescription">Sign in to manage your business profiles.</p>
+        <form id="loginForm" class="stack">
+          <label>Email<input type="email" id="loginEmail" autocomplete="username" required></label>
+          <label>Password<input type="password" id="loginPassword" autocomplete="current-password" required minlength="10"></label>
+          <button class="btn btn-primary" type="submit">Sign in</button>
+          <button class="text-button" type="button" id="forgotBtn">Forgot password?</button>
+          <p class="form-message" id="authMessage" role="status"></p>
+        </form>
+        <form id="setupForm" class="stack" hidden>
+          <label>Setup key<input type="password" id="setupKey" autocomplete="off" required></label>
+          <label>Admin email<input type="email" id="setupEmail" required></label>
+          <label>Create password<input type="password" id="setupPassword" minlength="12" required></label>
+          <label>Confirm password<input type="password" id="setupConfirm" minlength="12" required></label>
+          <button class="btn btn-primary" type="submit">Create admin account</button>
+          <p class="form-message" id="setupMessage" role="status"></p>
+        </form>
+        <form id="resetForm" class="stack" hidden>
+          <label>Reset token<input id="resetToken" required></label>
+          <label>New password<input type="password" id="resetPassword" minlength="12" required></label>
+          <button class="btn btn-primary" type="submit">Reset password</button>
+          <p class="form-message" id="resetMessage" role="status"></p>
+        </form>
+      </div>
+    </section>
+    <section id="appView" hidden>
+      <div id="dashboardView" class="view">
+        <div class="welcome-row"><div><p class="eyebrow">OVERVIEW</p><h2>Your business directory</h2><p class="muted">Manage profiles connected to existing QR codes.</p></div><button class="btn btn-primary" data-go="add">＋ Add business</button></div>
+        <div class="stats-grid"><article class="stat-card"><span>Total businesses</span><strong id="totalCount">—</strong><small>Published records</small></article><article class="stat-card"><span>Workflow status</span><strong class="stat-status" id="workflowStatus">Idle</strong><small id="workflowDetail">No active update</small></article><article class="stat-card"><span>Public domain</span><strong class="domain-value">modulos.in</strong><small>Existing QR URLs preserved</small></article></div>
+        <div class="panel"><div class="panel-heading"><div><h3>Recently updated</h3><p class="muted">Latest business profiles in your repository</p></div><button class="text-button" data-go="businesses">View all →</button></div><div id="recentList" class="business-list"><div class="empty">Loading businesses…</div></div></div>
+      </div>
+      <div id="businessesView" class="view" hidden>
+        <div class="section-heading"><div><h2>All businesses</h2><p class="muted">Search and manage your existing QR profiles.</p></div><button class="btn btn-primary" data-go="add">＋ Add business</button></div>
+        <div class="toolbar"><input id="searchInput" placeholder="Search name, ID, phone or email…" aria-label="Search businesses"><select id="filterSelect" aria-label="Filter businesses"><option value="all">All records</option><option value="with-logo">With logo</option><option value="without-logo">Without logo</option></select></div>
+        <div class="panel"><div id="businessList" class="business-list"><div class="empty">Loading businesses…</div></div></div>
+      </div>
+      <div id="addView" class="view" hidden>
+        <div class="section-heading"><div><h2 id="formTitle">Add business</h2><p class="muted">Use the ID already encoded in the physical QR code.</p></div><button class="btn btn-quiet" data-go="businesses">Cancel</button></div>
+        <form id="businessForm" class="panel form-panel">
+          <input type="hidden" id="originalId">
+          <div class="form-grid">
+            <label>Business ID <em>Required · existing QR ID</em><input id="businessId" pattern="[A-Za-z0-9_-]{1,80}" required placeholder="12345"></label>
+            <label>Business name <em>Required</em><input id="businessName" maxlength="120" required placeholder="Your business name"></label>
+            <label class="wide">Description<textarea id="description" rows="3" maxlength="2000" placeholder="A short introduction…"></textarea></label>
+            <label>Phone<input id="phone" type="tel" maxlength="30"></label>
+            <label>WhatsApp<input id="whatsapp" type="tel" maxlength="30" placeholder="Country code + number"></label>
+            <label>Email<input id="email" type="email" maxlength="254"></label>
+            <label>Full address<input id="address" maxlength="500"></label>
+            <label>Google Maps link<input id="maps" type="url" placeholder="https://maps.google.com/…"></label>
+            <label>Google Review link<input id="reviews" type="url" placeholder="https://…"></label>
+            <label>Website<input id="website" type="url" placeholder="https://example.com"></label>
+            <label>Instagram<input id="instagram" type="url" placeholder="https://instagram.com/…"></label>
+            <label>Facebook<input id="facebook" type="url" placeholder="https://facebook.com/…"></label>
+            <label>YouTube<input id="youtube" type="url" placeholder="https://youtube.com/…"></label>
+            <label class="wide">Other social links <em>One URL per line</em><textarea id="otherSocial" rows="2" placeholder="https://…"></textarea></label>
+            <div class="wide logo-field"><div><label for="logo">Business logo</label><p class="muted">PNG, JPG or WebP · up to 3 MB. Converted to PNG on the server.</p><input id="logo" type="file" accept="image/png,image/jpeg,image/webp"></div><img id="logoPreview" alt="Logo preview" hidden></div>
+          </div>
+          <div class="url-preview"><span>PUBLIC QR DESTINATION</span><strong id="publicUrl">https://modulos.in/nfcbusinesscp/ID</strong><button type="button" class="text-button" id="copyUrl">Copy URL</button></div>
+          <div class="form-footer"><p id="formMessage" class="form-message" role="status"></p><button class="btn btn-primary" type="submit" id="saveBusiness">Save business</button></div>
+        </form>
+      </div>
+      <div id="settingsView" class="view" hidden>
+        <div class="section-heading"><div><h2>Settings</h2><p class="muted">Deployment and account information.</p></div></div>
+        <div class="panel settings-panel"><h3>Deployment configuration</h3><p>Static frontend: GitHub Pages</p><p>Secure API: Vercel Functions</p><p>Repository data: GitHub JSON files</p><p>Production URL: <a href="https://modulos.in" target="_blank" rel="noopener">https://modulos.in</a></p><hr><h3>Workflow status</h3><p id="settingsWorkflow">Status will appear here after a business update.</p><button class="btn btn-secondary" id="refreshStatus">Refresh status</button></div>
+      </div>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </main>
+</div>
+<dialog id="detailDialog" class="detail-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form><div id="detailContent"></div><div class="dialog-actions"><button class="btn btn-secondary" id="editSelected">Edit</button><button class="btn btn-danger" id="deleteSelected">Delete business</button></div></dialog>
+<script src="/admin/app.js" defer></script>
+</body></html>

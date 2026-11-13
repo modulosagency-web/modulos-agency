@@ -1,0 +1,1 @@
+import {cors,json} from "../_lib/http.js";export default function handler(req,res){if(!cors(req,res))return;if(req.method!=="POST")return json(res,405,{error:"Method not allowed."});json(res,501,{error:"Self-service reset tokens are not enabled. Use the documented secure administrator recovery procedure."});}

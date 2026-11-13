@@ -1,0 +1,2 @@
+import {cors,json,cookie,sessionVerify,randomToken,setCookie} from "../_lib/http.js";
+export default function handler(req,res){if(!cors(req,res))return;if(req.method!=="GET")return json(res,405,{error:"Method not allowed."});const s=sessionVerify(cookie(req,"modulos_session"));const csrfToken=randomToken(24);setCookie(res,"modulos_csrf",csrfToken,28800);json(res,200,{authenticated:!!s,email:s?.email||null,setupRequired:!process.env.ADMIN_PASSWORD_HASH});}

@@ -1,0 +1,2 @@
+import {cors,json,body} from "../_lib/http.js";import {requireAuth} from "../_lib/auth.js";
+export default function handler(req,res){if(!cors(req,res))return;if(req.method!=="POST")return json(res,405,{error:"Method not allowed."});if(!requireAuth(req,res))return;json(res,200,{message:"Password recovery is administrator-assisted. Rotate ADMIN_PASSWORD_HASH in Vercel and redeploy. No reset token is emailed by this starter."});}

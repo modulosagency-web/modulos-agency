@@ -1,0 +1,9 @@
+const owner=()=>process.env.GITHUB_OWNER, repo=()=>process.env.GITHUB_REPO, branch=()=>process.env.GITHUB_BRANCH||"main";
+function config(){if(!process.env.GITHUB_TOKEN||!owner()||!repo())throw new Error("GitHub backend configuration is incomplete.");}
+export async function gh(path,options={}){config();const r=await fetch(`https://api.github.com${path}`,{...options,headers:{"Accept":"application/vnd.github+json","Authorization":`Bearer ${process.env.GITHUB_TOKEN}`,"X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json",...(options.headers||{})}});const data=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(data.message||`GitHub API error ${r.status}`);e.status=r.status;throw e;}return data;}
+export async function getFile(path){try{const d=await gh(`/repos/${owner()}/${repo()}/contents/${path}?ref=${branch()}`);return {sha:d.sha,content:Buffer.from(d.content.replace(/\n/g,""),"base64").toString("utf8")};}catch(e){if(e.status===404)return null;throw e;}}
+export async function putFile(path,content,message,sha){const body={message,content:Buffer.from(content).toString("base64"),branch:branch()};if(sha)body.sha=sha;return gh(`/repos/${owner()}/${repo()}/contents/${path}`,{method:"PUT",body:JSON.stringify(body)});}
+export async function deleteFile(path,message,sha){return gh(`/repos/${owner()}/${repo()}/contents/${path}`,{method:"DELETE",body:JSON.stringify({message,sha,branch:branch()})});}
+export async function dispatchWorkflow(inputs){const workflow=process.env.DEPLOY_WORKFLOW||"deploy.yml";return gh(`/repos/${owner()}/${repo()}/actions/workflows/${workflow}/dispatches`,{method:"POST",body:JSON.stringify({ref:branch(),inputs})});}
+export async function workflowRuns(){const workflow=process.env.DEPLOY_WORKFLOW||"deploy.yml";return gh(`/repos/${owner()}/${repo()}/actions/workflows/${workflow}/runs?branch=${branch()}&per_page=5`);}
+export async function repoInfo(){return {owner:owner(),repo:repo(),branch:branch()};}

@@ -1,0 +1,20 @@
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:#f1f5f9;color:#0f172a}
+.view[hidden],[hidden]{display:none!important}
+header{background:#0f172a;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+main{max-width:980px;margin:0 auto;padding:20px 16px}
+.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 4px #0001;margin-bottom:16px}
+.auth{max-width:380px;margin:12vh auto}
+label{display:block;font-weight:600;margin:12px 0 4px}input,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font:inherit}
+input:focus,textarea:focus,button:focus-visible{outline:2px solid #2563eb}
+button{padding:10px 16px;border:0;border-radius:8px;background:#2563eb;color:#fff;font:inherit;font-weight:600;cursor:pointer}
+button.sec{background:#e2e8f0;color:#0f172a}button.danger{background:#dc2626}button:disabled{opacity:.5;cursor:wait}
+.link{background:none;color:#2563eb;padding:0;font-weight:400}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.stat b{display:block;font-size:2rem}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}.bar input{flex:1;min-width:200px}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #e2e8f0;white-space:nowrap}
+td.act{display:flex;gap:6px}td.act button,td.act a{padding:6px 10px;font-size:.85rem}td.act a{background:#e2e8f0;color:#0f172a;border-radius:8px;text-decoration:none;font-weight:600}
+.msg{padding:10px;border-radius:8px;margin:10px 0}.msg.err{background:#fee2e2;color:#991b1b}.msg.ok{background:#dcfce7;color:#166534}
+dialog{border:0;border-radius:14px;padding:20px;width:min(560px,94vw);max-height:92vh}dialog::backdrop{background:#0008}
+.row{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}small{color:#64748b}
+ol.steps{list-style:none;padding:0}ol.steps li{padding:8px 12px;margin:6px 0;border-radius:8px;background:#e2e8f0;color:#64748b}
+ol.steps li.done{background:#dcfce7;color:#166534}ol.steps li.now{background:#dbeafe;color:#1e40af;font-weight:700}ol.steps li.bad{background:#fee2e2;color:#991b1b;font-weight:700}

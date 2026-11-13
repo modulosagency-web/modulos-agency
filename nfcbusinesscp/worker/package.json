@@ -1,0 +1,4 @@
+{ "name": "modulos-api", "private": true, "version": "1.0.0",
+  "scripts": { "dev": "wrangler dev", "deploy": "wrangler deploy" },
+  "dependencies": { "bcryptjs": "^2.4.3" },
+  "devDependencies": { "wrangler": "^3.80.0" } }

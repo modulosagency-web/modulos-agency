@@ -1,0 +1,13 @@
+name = "modulos-business-api"
+main = "src/index.js"
+compatibility_date = "2025-01-15"
+
+[[kv_namespaces]]
+binding = "AUTH_KV"
+id = "REPLACE_WITH_CLOUDFLARE_KV_NAMESPACE_ID"
+
+[vars]
+GITHUB_OWNER = "REPLACE_WITH_GITHUB_OWNER"
+GITHUB_REPO = "REPLACE_WITH_REPOSITORY_NAME"
+GITHUB_BRANCH = "main"
+ALLOWED_ORIGINS = "https://modulos.in,https://www.modulos.in"
